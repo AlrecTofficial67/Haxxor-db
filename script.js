@@ -2,10 +2,10 @@
 const SUPABASE_URL = 'https://bafearxskfanzclgk.supabase.co';
 const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhZmVhcnhza2ZhbnpjbGdrZXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2NjkwMjAsImV4cCI6MjA4ODI0NTAyMH0.bl7OYTIjL_cAqTIdPR0uj8NKeZXbTg02Z2WN1yJvVu4';
 const UPLOAD_KEY = 'HAXXOR2025';
-const GOOGLE_CLIENT_ID = 'https://54852425354-lqtl5j2nffrmae9g8v8kcnn4sk7ngpnb.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '54852425354-lqtl5j2nffrmae9g8v8kcnn4sk7ngpnb.apps.googleusercontent.com';
 const STORAGE_BUCKET = 'script-images';
 const TABLE_NAME = 'scripts'; const SB_CONFIGURED = true;
-const G_CONFIGURED = GOOGLE_CLIENT_ID !== 'https://54852425354-lqtl5j2nffrmae9g8v8kcnn4sk7ngpnb.apps.googleusercontent.com';
+const G_CONFIGURED = GOOGLE_CLIENT_ID !== '54852425354-lqtl5j2nffrmae9g8v8kcnn4sk7ngpnb.apps.googleusercontent.com';
 let googleUser=null,supabaseSession=null,currentImgMode='none',uploadedFileObj=null,allFeedItems=[]; (function(){ const w=document.getElementById('up-config-warn'); if(w)w.style.display='none'; if(G_CONFIGURED)injectGoogleSDK(); renderLoginState();
 })(); function injectGoogleSDK(){ if(document.getElementById('gsdk'))return; const s=document.createElement('script'); s.id='gsdk';s.src='https://accounts.google.com/gsi/client';s.async=true;s.defer=true; s.onload=()=>{ google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleCredential,auto_select:false}); renderGBtn();checkExistingSession(); }; document.head.appendChild(s);
 } function renderGBtn(){ const btn=document.getElementById('g-signin-btn'); if(btn&&typeof google!=='undefined')google.accounts.id.renderButton(btn,{theme:'filled_black',size:'large',text:'signin_with',shape:'rectangular',width:btn.offsetWidth||280});
